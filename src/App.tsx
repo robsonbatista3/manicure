@@ -76,15 +76,18 @@ export default function App() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative mb-8 p-1 rounded-[3rem] bg-gradient-to-tr from-brand-pink via-brand-purple to-brand-cyan animate-float"
+            className="relative mb-8 p-1 rounded-full bg-gradient-to-tr from-brand-pink via-brand-purple to-brand-cyan animate-float"
           >
-            <div className="p-1 bg-[#0F0F1A] rounded-[2.8rem]">
-              <img 
-                src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerRqoVFUCEFgPv3Ky6V7-TW5tMs1PwbxHTL3YyMYtX3EgiN9HBxBj5IEkF3Lf30tLxSYxA-j68oFBpPs9Jrr_hlh61uQCmfzV608seolv5qrVOTWW1MboeJO9MXyViYuGa2AcBEF-MJ6TiN=w103-h86-n-k-no-nu"
-                alt="Foto de perfil de Emilly Hebertt, manicure"
-                className="w-32 h-32 object-cover rounded-[2.5rem]"
-                referrerPolicy="no-referrer"
-              />
+            <div className="p-1 bg-[#0F0F1A] rounded-full">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#1A1A2E] to-[#0F0F1A] flex flex-col items-center justify-center border border-white/10 shadow-2xl relative overflow-hidden">
+                {/* Decorative glow */}
+                <div className="absolute inset-0 bg-brand-purple/5 blur-xl" />
+                
+                <span className="text-5xl font-serif font-bold text-white leading-none tracking-tighter z-10">KF</span>
+                <div className="h-[1px] w-16 bg-gradient-to-r from-transparent via-white/40 to-transparent my-1 z-10" />
+                <span className="text-[8px] font-bold text-white tracking-[0.2em] uppercase z-10">Espaçokfarias</span>
+                <span className="text-[6px] text-white/60 tracking-[0.1em] uppercase z-10">Nail Designer</span>
+              </div>
             </div>
             <motion.div 
               className="absolute -bottom-2 -right-2 bg-brand-cyan p-2 rounded-2xl shadow-xl"
@@ -96,9 +99,7 @@ export default function App() {
           </motion.div>
           
           <h1 className="text-4xl font-extrabold mb-3 tracking-tighter">
-            <span className="text-gradient">Emilly Hebertt</span>
-            <br />
-            <span className="text-white">nails</span>
+            <span className="text-gradient">espacokfarias</span>
           </h1>
           <p className="text-white/60 text-lg font-medium tracking-wide uppercase text-sm">
             Especialista em Unhas & Bem-estar
@@ -106,6 +107,36 @@ export default function App() {
         </header>
 
         <main>
+          {/* Services Section */}
+          <section className="mb-20">
+            <h2 className="text-2xl font-bold mb-8 px-2 flex items-center gap-3">
+              <span className="w-8 h-1 bg-brand-cyan rounded-full" />
+              Nossos Serviços
+            </h2>
+            <div className="grid grid-cols-1 gap-4">
+              {[
+                "Alongamento de Unha",
+                "Manicure",
+                "Pedicure",
+                "Spa dos Pés",
+                "Depilação"
+              ].map((service, index) => (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="glass p-4 rounded-2xl flex items-center gap-4"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-brand-pink/20 flex items-center justify-center text-brand-pink">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
+                  <span className="text-lg font-medium">{service}</span>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
           {/* Quick Links Section */}
           <section className="mb-20">
             <h2 className="text-2xl font-bold mb-8 px-2 flex items-center gap-3">
@@ -114,31 +145,31 @@ export default function App() {
             </h2>
             <nav>
               <LinkButton 
-                href="https://wa.me/5581987952973"
+                href="https://wa.me/5516993930395"
                 icon={<MessageCircle className="w-7 h-7" />}
                 label="Agendar via WhatsApp"
-                ariaLabel="Enviar mensagem para Emilly Hebertt Nails via WhatsApp"
+                ariaLabel="Enviar mensagem para espacokfarias via WhatsApp"
                 color="from-green-400 to-emerald-600"
               />
               <LinkButton 
-                href="https://www.instagram.com/emilly.heberttnails"
+                href="https://www.instagram.com/espacokfarias/"
                 icon={<Instagram className="w-7 h-7" />}
                 label="Ver Portfólio no Insta"
-                ariaLabel="Instagram de Emilly Hebertt Nails"
+                ariaLabel="Instagram de espacokfarias"
                 color="from-pink-500 via-purple-500 to-orange-500"
               />
               <LinkButton 
-                href="https://www.google.com/maps/search/?api=1&query=R.+Liberdade,+305+-+Candeias,+Jaboatão+dos+Guararapes+-+PE,+54430-450"
+                href="https://www.google.com/maps/search/?api=1&query=Rua+João+Penteado,+953+-+Jardim+Sumaré"
                 icon={<MapPin className="w-7 h-7" />}
                 label="Localização & Horários"
                 ariaLabel="Ver endereço e horário de funcionamento no Google Maps"
                 color="from-brand-cyan to-blue-600"
               />
               <LinkButton 
-                href="tel:+5581987952973"
+                href="tel:+5516993930395"
                 icon={<Phone className="w-7 h-7" />}
-                label="Ligar para a Emilly"
-                ariaLabel="Ligar para Emilly Hebertt Nails"
+                label="Ligar para espacokfarias"
+                ariaLabel="Ligar para espacokfarias"
                 color="from-brand-purple to-indigo-700"
               />
             </nav>
@@ -170,47 +201,37 @@ export default function App() {
 
           {/* Gallery Section */}
           <section className="mb-20">
-            <h2 className="text-2xl font-bold mb-10 px-2">Galeria de Luxo</h2>
-            <div className="grid grid-cols-2 gap-6">
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                className="col-span-2 aspect-video rounded-[2.5rem] overflow-hidden glass p-3"
-              >
-                <img 
-                  src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqWM9arR1En2EgOW38Up3BoucO_H_-vCvNNE3GAWGQ6SmMM917LLG1hHQY8N_nVO-A3PQ459JHvddjhW3i3sGC4or2yW3jgA9ahfwAmNca_QPV_5y_qHzmd2glw1h-Y8lZyceb2snQsko-P=s680-w680-h510-rw"
-                  alt="Unhas em gel com esmalte nude e brilho"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover rounded-[2rem]"
-                  referrerPolicy="no-referrer"
-                />
-              </motion.div>
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                className="aspect-square rounded-[2.5rem] overflow-hidden glass p-3"
-              >
-                <img 
-                  src="https://lh3.googleusercontent.com/p/AF1QipNIVAfoJQBJI6Ibpnj1oYk1j-HrXNabd62CQKpl=w103-h129-n-k-no-nu"
-                  alt="Detalhe de unhas decoradas com design floral"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover rounded-[2rem]"
-                  referrerPolicy="no-referrer"
-                />
-              </motion.div>
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                className="aspect-square rounded-[2.5rem] overflow-hidden glass p-3"
-              >
-                <img 
-                  src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerkpzDOSrwoXsxvT9EF0bf5TD7JBkmU0VplN88LbKxBZuzDAcYx_SpwOCONkNSaYB3hkAoUPAoYb7BZOC0UxW-gZTAiJWP751yXnXSDQ1kel6CpfaHGozGPHzkSlPLADRdNLBIxvsg558=w103-h129-n-k-no-nu"
-                  alt="Unhas longas com alongamento em gel e esmalte roxo"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover rounded-[2rem]"
-                  referrerPolicy="no-referrer"
-                />
-              </motion.div>
+            <h2 className="text-2xl font-bold mb-8 px-2 flex items-center gap-3">
+              <span className="w-8 h-1 bg-brand-purple rounded-full" />
+              Galeria de Luxo
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                "https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=800",
+                "https://images.unsplash.com/photo-1604654894610-df490c96827f?q=80&w=800",
+                "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=800",
+                "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800",
+                "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=800",
+                "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?q=80&w=800",
+                "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800",
+                "https://images.unsplash.com/photo-1599202860130-f600f4948364?q=80&w=800"
+              ].map((img, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.05 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="aspect-square rounded-2xl overflow-hidden glass border border-white/10"
+                >
+                  <img 
+                    src={img} 
+                    alt={`Trabalho espacokfarias ${index + 1}`}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </motion.div>
+              ))}
             </div>
           </section>
         </main>
@@ -220,16 +241,16 @@ export default function App() {
           <div className="mb-10 text-white/50 space-y-4">
             <p className="flex items-center justify-center gap-3 text-lg">
               <MapPin className="w-6 h-6 text-brand-cyan" />
-              Candeias, Jaboatão dos Guararapes - PE
+              R. João Penteado, 953 - Jardim Sumaré
             </p>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-brand-cyan font-bold">
               <div className="w-2 h-2 bg-brand-cyan rounded-full animate-pulse" />
-              Aberto até as 20:00
+              Aberto: 08:00 - 18:00
             </div>
           </div>
 
           <p className="text-sm text-white/30">
-            © 2026 Emilly Hebertt Nails. 
+            © 2026 espacokfarias. 
             <br />
             Beleza e Confiança em cada detalhe.
           </p>
